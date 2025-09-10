@@ -411,336 +411,67 @@
     }
   }
   
-  /* Main title section */
-        .main-title {
-            padding: 80px 10% 40px;
-            background-color: var(--background);
-            text-align: center;
-        }
+  /* Feature section */
+  .features {
+    padding: 80px 10%;
+    background-color: var(--background);
+    text-align: center;
+  }
 
-        .main-title h1 {
-            font-family: 'Inter', sans-serif;
-            font-size: 3.5rem;
-            color: var(--text-dark);
-            margin-bottom: 20px;
-            font-weight: 900;
-        }
+  .hero-content h1 {
+    font-size: 4.0rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+    margin-bottom: 25px;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.1;
+    animation: fadeInUp 1s ease-out forwards;
+    opacity: 0;
+  }
 
-        /* Individual Feature Sections */
-        .feature-section {
-            padding: 100px 10%;
-            display: flex;
-            align-items: center;
-            gap: 80px;
-            min-height: 600px;
-        }
+  .features h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: 3.5rem;
+    color: var(--text-dark);
+    margin-bottom: 50px;
+    font-weight: 900;
+  }
 
-        .feature-image {
-          height: 100%;
-          width: 445px;
-        }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+  }
 
-        .feature-section:nth-child(even) {
-            background-color: var(--background);
-            flex-direction: row-reverse;
-        }
+  .feature-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
 
-        .feature-section:nth-child(odd) {
-            background-color: white;
-        }
+  .feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(105, 68, 255, 0.15);
+  }
 
-        .feature-content {
-            flex: 1;
-            max-width: 500px;
-        }
+  .feature-icon {
+    font-size: 50px;
+    color: var(--primary);
+    margin-bottom: 20px;
+  }
 
-        .feature-visual {
-            flex: 1;
-            max-width: 500px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+  .feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--text-dark);
+  }
 
-        .feature-content h2 {
-            font-size: 4.5rem;
-            font-weight: 1000;
-            margin-bottom: 30px;
-            color: var(--text-dark);
-            line-height: 1.1;
-            font-family: "Montserrat", sans-serif ;
-        }
-
-        .feature-content p {
-            font-size: 1.2rem;
-            color: var(--text-);
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-
-        /* Visual Components */
-        .visual-container {
-            background: linear-gradient(135deg, #F7E6A3, #E6D16A);
-            border-radius: 30px;
-            padding: 40px;
-            width: 420px;
-            height: 320px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Money Management Visual */
-        .money-card {
-            background: white;
-            border-radius: 20px;
-            padding: 25px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            border: 3px solid var(--primary);
-            width: 300px;
-            text-align: center;
-            position: relative;
-        }
-
-        .money-card::before {
-            content: "✨";
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            font-size: 30px;
-        }
-
-        .money-card::after {
-            content: "💳";
-            position: absolute;
-            top: -15px;
-            right: -10px;
-            font-size: 35px;
-        }
-
-        .card-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 15px;
-            color: white;
-            font-size: 20px;
-        }
-
-        .balance-display {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        /* Security Visual */
-        .security-visual {
-            background: linear-gradient(135deg, #F7E6A3, #E6D16A);
-            border-radius: 30px;
-            padding: 40px;
-            width: 420px;
-            height: 320px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        .security-card {
-            background: white;
-            border-radius: 20px;
-            padding: 25px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            border: 3px solid var(--primary);
-            width: 280px;
-        }
-
-        .control-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .control-item:last-child {
-            border-bottom: none;
-        }
-
-        .control-label {
-            font-weight: 600;
-            color: var(--text-dark);
-        }
-
-        .toggle-switch {
-            width: 50px;
-            height: 25px;
-            background: var(--primary);
-            border-radius: 25px;
-            position: relative;
-            cursor: pointer;
-        }
-
-        .toggle-switch::after {
-            content: "";
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: white;
-            border-radius: 50%;
-            top: 2.5px;
-            right: 2.5px;
-            transition: all 0.3s ease;
-        }
-
-        .spending-meter {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: conic-gradient(#4CAF50 0deg 216deg, #e0e0e0 216deg 360deg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 15px;
-            position: relative;
-        }
-
-        .spending-meter::after {
-            content: "60%";
-            font-size: 12px;
-            font-weight: bold;
-            color: var(--text-dark);
-        }
-
-        /* Learning Visual */
-        .learning-visual {
-            background: linear-gradient(135deg, #F7E6A3, #E6D16A);
-            border-radius: 30px;
-            padding: 40px;
-            width: 420px;
-            height: 320px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        .learning-card {
-            background: white;
-            border-radius: 20px;
-            padding: 25px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            border: 3px solid var(--primary);
-            width: 300px;
-            text-align: center;
-        }
-
-        .achievement-badge {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(45deg, #FFD700, #FFA500);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 15px;
-            font-size: 25px;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 8px;
-            background: #e0e0e0;
-            border-radius: 4px;
-            overflow: hidden;
-            margin: 15px 0;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(45deg, var(--primary), #8B5FFF);
-            width: 75%;
-            border-radius: 4px;
-        }
-
-        .skill-level {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            margin-top: 10px;
-        }
-
-        /* Decorative elements */
-        .floating-element {
-            position: absolute;
-            opacity: 0.6;
-        }
-
-        .money-floating {
-            font-size: 25px;
-            top: 20px;
-            right: 30px;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .security-floating {
-            font-size: 20px;
-            top: 30px;
-            left: 20px;
-            animation: float 2s ease-in-out infinite reverse;
-        }
-
-        .learning-floating {
-            font-size: 22px;
-            bottom: 30px;
-            right: 25px;
-            animation: float 2.5s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .feature-section {
-                flex-direction: column;
-                text-align: center;
-                gap: 40px;
-                padding: 60px 5%;
-            }
-
-            .feature-section:nth-child(even) {
-                flex-direction: column;
-            }
-
-            .feature-content h2 {
-                font-size: 2.5rem;
-            }
-
-            .visual-container {
-                width: 350px;
-                height: 280px;
-            }
-
-            .security-visual,
-            .learning-visual {
-                width: 350px;
-                height: 280px;
-            }
-        }
-  
-
+  .feature-card p {
+    color: #666;
+    line-height: 1.6;
+  }
 
   /* Mobile Responsive */
   @media (max-width: 900px) {
