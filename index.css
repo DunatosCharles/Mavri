@@ -1409,67 +1409,69 @@
             }
         }
 
-        /* Mobile phones - stack vertically with centered text */
-        @media (max-width: 480px) {
-            .get-started {
-                padding: 40px 5%;
-            }
-            
-            .get-started-container {
-                flex-direction: column;
-                text-align: center;
-                gap: 40px;
-            }
-            
-            .get-started-content {
-                order: 1; /* Text first */
-                max-width: 100%;
-            }
-            
-            .get-started-content h2 {
-                font-size: 1.8rem;
-                margin-bottom: 20px;
-            }
-            
-            .get-started-content p {
-                font-size: 0.95rem;
-                margin-bottom: 25px;
-            }
-            
-            .get-started-image {
-                order: 2; /* Image second */
-                max-width: 100%;
-            }
-            
-            .app-buttons {
-                justify-content: center;
-                gap: 15px;
-            }
-            
-            .app-button {
-                font-size: 13px;
-                padding: 12px 18px;
-                min-width: 160px;
-            }
-        }
+/* Mobile phones - stack vertically with centered text */
+@media (max-width: 480px) {
+    .get-started {
+        padding: 40px 5%;
+    }
+    
+    .get-started-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+    
+    .get-started-content {
+        order: 1; /* Text first */
+        max-width: 100%;
+    }
+    
+    .get-started-content h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+    
+    .get-started-content p {
+        font-size: 0.95rem;
+        margin-bottom: 25px;
+    }
+    
+    .get-started-image {
+        display: none; /* Hide image on mobile */
+    }
+    
+    .app-buttons {
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    .app-button {
+        font-size: 13px;
+        padding: 12px 18px;
+        min-width: 160px;
+    }
+}
 
-        /* Extra small phones */
-        @media (max-width: 380px) {
-            .get-started-content h2 {
-                font-size: 1.6rem;
-            }
-            
-            .app-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .app-button {
-                width: 100%;
-                max-width: 250px;
-            }
-        }
- 
+/* Extra small phones */
+@media (max-width: 380px) {
+    .get-started-content h2 {
+        font-size: 1.6rem;
+    }
+    
+    .app-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .app-button {
+        width: 100%;
+        max-width: 250px;
+    }
+    
+    .get-started-image {
+        display: none; /* Keep hidden on extra small phones too */
+    }
+} 
         /* CONTACT SECTION */
         .contact-section {
             padding: 80px 5%;
