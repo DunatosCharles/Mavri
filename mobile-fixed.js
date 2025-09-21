@@ -164,3 +164,17 @@ document.addEventListener('DOMContentLoaded', function() {
     el.style.setProperty('--child-index', index);
   });
 });
+
+const scriptURL = 'https://script.google.com/macros/s/AKfycbytXBf9qB_cNSAlQuTWSEjLU8AL9N5t6FzlxIUkTNd0BA_UTstGMeX_DJak9FKupyx2-g/exec'
+
+const form = document.forms['contact-form']
+
+form.addEventListener('submit', e => {
+  
+  e.preventDefault()
+  
+  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+  .then(response => alert("Thank you! Form is submitted" ))
+  .then(() => { window.location.reload(); })
+  .catch(error => console.error('Error!', error.message))
+})
