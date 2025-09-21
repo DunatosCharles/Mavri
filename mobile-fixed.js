@@ -2,7 +2,7 @@ window.addEventListener('load', function() {
   // For demo purposes, add a slight delay (remove in production for immediate load)
   setTimeout(function() {
     hidePreloader();
-  }, 2000);
+  }, 0);
 });
 
 function hidePreloader() {
@@ -165,16 +165,31 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-const scriptURL = 'https://script.google.com/macros/s/AKfycbytXBf9qB_cNSAlQuTWSEjLU8AL9N5t6FzlxIUkTNd0BA_UTstGMeX_DJak9FKupyx2-g/exec'
+const scriptURL = 'https://script.google.com/macros/s/AKfycbwH9uPT6eAZ9-ovamHEEJ3HcnybZqtu3EbzL_xYohRPhtO_GK7GKxyoN7QWHyOEKSGatw/exec'
 
 const form = document.forms['contact-form']
 
 form.addEventListener('submit', e => {
-  
-  e.preventDefault()
-  
-  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-  .then(response => alert("Thank you! Form is submitted" ))
-  .then(() => { window.location.reload(); })
-  .catch(error => console.error('Error!', error.message))
+    e.preventDefault()
+    
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.text(); // Get as text first
+    })
+    .then(text => {
+        const data = JSON.parse(text); // Parse the JSON
+        if (data.result === 'success') {
+            alert("Thank you! Form is submitted successfully!");
+            form.reset(); // Clear the form
+        } else {
+            throw new Error('Form submission failed');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert("Sorry, there was an error submitting the form. Please try again.");
+    })
 })
