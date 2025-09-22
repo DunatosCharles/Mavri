@@ -165,89 +165,81 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-const scriptURL = 'https://script.google.com/macros/s/AKfycbxjtXUsS3ct5noDvZXRo-N4sKDmTNscsm1SXub5Drog-0dT-xvBCbOMLIR-Bv7JHGx9wA/exec'
+const scriptURL = 'https://script.google.com/macros/s/AKfycbyB_K64ZElJgLs2LrDmEYeoZg9CQ_FZIdjR9OS77K2qaWLxcZCk2ax3A3VbgqDhGkWeNg/exec'
 
-// Contact form handler (your existing form)
+// Contact form handler
 const contactForm = document.forms['contact-form']
 if (contactForm) {
     contactForm.addEventListener('submit', e => {
         e.preventDefault()
         const submitBtn = document.getElementById('submit')
-        
+
         // Show loading state
         const originalText = submitBtn.textContent
         submitBtn.textContent = 'Sending...'
         submitBtn.disabled = true
-       
-        fetch(scriptURL, { method: 'POST', body: new FormData(contactForm)})
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.text();
-        })
-        .then(text => {
-            const data = JSON.parse(text);
-            if (data.result === 'success') {
-                alert("Thank you! Your message has been sent successfully!");
-                contactForm.reset();
-            } else {
-                throw new Error('Form submission failed');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert("Sorry, there was an error submitting the form. Please try again.");
-        })
-        .finally(() => {
-            submitBtn.textContent = originalText
-            submitBtn.disabled = false
-        })
+
+        // Build form data and add formType
+        const formData = new FormData(contactForm)
+        formData.append('formType', 'contact')
+
+        fetch(scriptURL, { method: 'POST', body: formData })
+            .then(response => response.json())
+            .then(data => {
+                if (data.result === 'success') {
+                    alert("Thank you! Your message has been sent successfully!")
+                    contactForm.reset()
+                } else {
+                    throw new Error('Form submission failed')
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error)
+                alert("Sorry, there was an error submitting the form. Please try again.")
+            })
+            .finally(() => {
+                submitBtn.textContent = originalText
+                submitBtn.disabled = false
+            })
     })
 }
 
-// Newsletter form handler (new)
+// Newsletter form handler
 const newsletterForm = document.forms['newsletter-form']
 if (newsletterForm) {
     newsletterForm.addEventListener('submit', e => {
         e.preventDefault()
         const submitBtn = newsletterForm.querySelector('button[type="submit"]')
-        
+
         // Show loading state
         const originalText = submitBtn.textContent
         submitBtn.textContent = 'Joining...'
         submitBtn.disabled = true
-       
-        fetch(scriptURL, { method: 'POST', body: new FormData(newsletterForm)})
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.text();
-        })
-        .then(text => {
-            const data = JSON.parse(text);
-            if (data.result === 'success') {
-                alert("Welcome! You've successfully joined our early access list!");
-                newsletterForm.reset();
-            } else {
-                throw new Error('Form submission failed');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert("Sorry, there was an error signing you up. Please try again.");
-        })
-        .finally(() => {
-            submitBtn.textContent = originalText
-            submitBtn.disabled = false
-        })
+
+        // Build form data and add formType
+        const formData = new FormData(newsletterForm)
+        formData.append('formType', 'newsletter')
+
+        fetch(scriptURL, { method: 'POST', body: formData })
+            .then(response => response.json())
+            .then(data => {
+                if (data.result === 'success') {
+                    alert("Welcome! You've successfully joined our early access list!")
+                    newsletterForm.reset()
+                } else {
+                    throw new Error('Form submission failed')
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error)
+                alert("Sorry, there was an error signing you up. Please try again.")
+            })
+            .finally(() => {
+                submitBtn.textContent = originalText
+                submitBtn.disabled = false
+            })
     })
 }
 
-const formData = new FormData(contactForm);
-formData.append("secret", "MY_SUPER_SECRET_KEY");
-
-fetch(scriptURL, { method: "POST", body: formData })
 
 
