@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-const scriptURL = 'https://script.google.com/macros/s/AKfycbyB_K64ZElJgLs2LrDmEYeoZg9CQ_FZIdjR9OS77K2qaWLxcZCk2ax3A3VbgqDhGkWeNg/exec'
+const scriptURL = 'https://script.google.com/macros/s/AKfycbzHnXAcHiWY8IRS9wr6bHWAQOm8GWHqW0Mjyu03qQQ5yjfjTshsiB8VZ0BTH2ZDqMwiAQ/exec'
 
 // Contact form handler
 const contactForm = document.forms['contact-form']
