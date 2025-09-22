@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-const scriptURL = 'https://script.google.com/macros/s/AKfycbxH7lJZVtraW5-rRC8w3U0Dged8fRzlIyetK7XQJqte_rBkB8TYuta9qP1ANYgt2jFmAg/exec'
+const scriptURL = 'https://script.google.com/macros/s/AKfycbzTDULvci3f1nOndtt0FYeG9aOAcQfXTCi7zc3dFus4be-Zcdy0_5-ziifg2E9KmNBAmg/exec'
 
 // Contact form handler (your existing form)
 const contactForm = document.forms['contact-form']
