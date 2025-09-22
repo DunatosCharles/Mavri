@@ -245,3 +245,9 @@ if (newsletterForm) {
     })
 }
 
+const formData = new FormData(contactForm);
+formData.append("secret", "MY_SUPER_SECRET_KEY");
+
+fetch(scriptURL, { method: "POST", body: formData })
+
+
