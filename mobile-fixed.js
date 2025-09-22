@@ -165,31 +165,83 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-const scriptURL = 'https://script.google.com/macros/s/AKfycbwH9uPT6eAZ9-ovamHEEJ3HcnybZqtu3EbzL_xYohRPhtO_GK7GKxyoN7QWHyOEKSGatw/exec'
+const scriptURL = 'https://script.google.com/macros/s/AKfycbxH7lJZVtraW5-rRC8w3U0Dged8fRzlIyetK7XQJqte_rBkB8TYuta9qP1ANYgt2jFmAg/exec'
 
-const form = document.forms['contact-form']
+// Contact form handler (your existing form)
+const contactForm = document.forms['contact-form']
+if (contactForm) {
+    contactForm.addEventListener('submit', e => {
+        e.preventDefault()
+        const submitBtn = document.getElementById('submit')
+        
+        // Show loading state
+        const originalText = submitBtn.textContent
+        submitBtn.textContent = 'Sending...'
+        submitBtn.disabled = true
+       
+        fetch(scriptURL, { method: 'POST', body: new FormData(contactForm)})
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .then(text => {
+            const data = JSON.parse(text);
+            if (data.result === 'success') {
+                alert("Thank you! Your message has been sent successfully!");
+                contactForm.reset();
+            } else {
+                throw new Error('Form submission failed');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert("Sorry, there was an error submitting the form. Please try again.");
+        })
+        .finally(() => {
+            submitBtn.textContent = originalText
+            submitBtn.disabled = false
+        })
+    })
+}
 
-form.addEventListener('submit', e => {
-    e.preventDefault()
-    
-    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.text(); // Get as text first
+// Newsletter form handler (new)
+const newsletterForm = document.forms['newsletter-form']
+if (newsletterForm) {
+    newsletterForm.addEventListener('submit', e => {
+        e.preventDefault()
+        const submitBtn = newsletterForm.querySelector('button[type="submit"]')
+        
+        // Show loading state
+        const originalText = submitBtn.textContent
+        submitBtn.textContent = 'Joining...'
+        submitBtn.disabled = true
+       
+        fetch(scriptURL, { method: 'POST', body: new FormData(newsletterForm)})
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .then(text => {
+            const data = JSON.parse(text);
+            if (data.result === 'success') {
+                alert("Welcome! You've successfully joined our early access list!");
+                newsletterForm.reset();
+            } else {
+                throw new Error('Form submission failed');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert("Sorry, there was an error signing you up. Please try again.");
+        })
+        .finally(() => {
+            submitBtn.textContent = originalText
+            submitBtn.disabled = false
+        })
     })
-    .then(text => {
-        const data = JSON.parse(text); // Parse the JSON
-        if (data.result === 'success') {
-            alert("Thank you! Form is submitted successfully!");
-            form.reset(); // Clear the form
-        } else {
-            throw new Error('Form submission failed');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert("Sorry, there was an error submitting the form. Please try again.");
-    })
-})
+}
+
